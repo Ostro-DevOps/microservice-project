@@ -19,6 +19,7 @@ WORKDIR /src
 # restore dependencies
 COPY go.mod go.sum ./
 COPY ./mod /go/pkg/
+RUN go mod download
 
 COPY . .
 RUN go build -gcflags='-N -l' -o /checkoutservice .
